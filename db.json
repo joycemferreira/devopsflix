@@ -1,0 +1,19 @@
+{
+    "categorias":[
+        {   "id": 1,
+            "nome": "Front-End",
+            "descricao": "Front-End content",
+            "cor": "#cbd1ff"
+        },
+        {   "id": 2,
+            "nome": "Back-End",
+            "descricao": "Back-End content",
+            "cor": "#cbd1ff"
+        },
+        {   "id": 2,
+            "nome": "UX",
+            "descricao": "UX content",
+            "cor": "#cbd1ff"
+        }
+    ]
+}
