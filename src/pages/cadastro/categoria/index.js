@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
@@ -28,7 +28,39 @@ function CadastroCategoria() {
       infosDoEvento.target.value,
     );
   }
+  useEffect(() => {
+    const URL_TOP = 'http://localhost:8080/categorias';
+    fetch(URL_TOP)
+      .then(async (respostaDoServitor) => {
+        const resposta = await respostaDoServitor.json();
+        setCategorias([
+          ...resposta,
+        ]);
+      });
+    // setTimeout(() => {
+    //   setCategorias([
+    //     ...categorias, {
+    //       id: 1,
+    //       nome: 'Front-End',
+    //       descricao: 'Front-End content',
+    //       cor: '#cbd1ff',
+    //     },
+    //     {
+    //       id: 2,
+    //       nome: 'Back-End',
+    //       descricao: 'Back-End content',
+    //       cor: '#cbd1ff',
+    //     },
+    //     {
+    //       id: 3,
+    //       nome: 'UX',
+    //       descricao: 'UX content',
+    //       cor: '#cbd1ff',
+    //     },
 
+    //   ]);
+    // }, 4 * 1000);
+  }, []);
   return (
     <PageDefault>
       <h1>
@@ -68,23 +100,18 @@ function CadastroCategoria() {
           name="cor"
           onChange={handleChange}
         />
-        {/* <div>
-            <label>
-              Cor:
-              <input
-                type="color"
-                value = {values.cor}
-                name="cor"
-                onChange={handleChange}
-                />
-            </label>
-
-          </div> */}
 
         <Button>
           Cadastrar
         </Button>
       </form>
+
+      {categorias.length === 0 && (
+      <div>
+        Loading...
+      </div>
+      )}
+
       <ul>
         {categorias.map((categoria, id) => (
           <li key={`${categoria}${id}`}>
