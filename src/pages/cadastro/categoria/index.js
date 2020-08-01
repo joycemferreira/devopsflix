@@ -29,7 +29,7 @@ function CadastroCategoria() {
     );
   }
   useEffect(() => {
-    const URL_TOP = 'http://localhost:8080/categorias';
+    const URL_TOP = 'https://devopsflix.herokuapp.com/categorias';
     fetch(URL_TOP)
       .then(async (respostaDoServitor) => {
         const resposta = await respostaDoServitor.json();
